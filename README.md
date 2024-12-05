@@ -1,4 +1,4 @@
-# UniQA: Unified Vision-Language Pre-training of Quality and Aesthetics [paper](https://arxiv.org/abs/2406.01069)
+# UniQA: Unified Vision-Language Pre-training of Quality and Aesthetics [[paper](https://arxiv.org/abs/2406.01069)]
 
 ## :loudspeaker: Abstract
 
