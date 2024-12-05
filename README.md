@@ -31,7 +31,7 @@ We release the UniQA pre-trained weight, multimodal IQA and IAA dataset.  **You 
  [BaiduNetDisk](https://pan.baidu.com/s/1XB55QtbimMojGDIJ8h8UnA?pwd=tnnq)(code: tnnq)
 
  - Meta_info (also can be found in [IQA-Pytorch](https://github.com/chaofengc/IQA-PyTorch)): [Google Drive](https://drive.google.com/file/d/1XldiIPXm3Z86-WIHAJhpD5LYvBSxj6Lt/view?usp=sharing); 
- [BaiduNetDisk]([https://pan.baidu.com/s/1XB55QtbimMojGDIJ8h8UnA?pwd=tnnq](https://pan.baidu.com/s/1dCW3ux9kUtv7uoMazeCv9A?pwd=m5z7))(code: m5z7)
+ [BaiduNetDisk](https://pan.baidu.com/s/1dCW3ux9kUtv7uoMazeCv9A?pwd=m5z7)(code: m5z7)
 
 ## 🚀 Training
 More detail please see [IQA-PyTorch](https://github.com/chaofengc/IQA-PyTorch).
