@@ -1,0 +1,6 @@
+furo
+recommonmark
+sphinx-autoapi
+sphinx-markdown-tables
+sphinx_rtd_theme
+sphinxcontrib-napoleon
