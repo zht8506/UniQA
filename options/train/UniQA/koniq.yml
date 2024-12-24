@@ -49,7 +49,7 @@ datasets:
 network:
   type: UniQA_Adapter_Patchtest
   model_type: CLIP_Adapter_prompt
-  backbone: UniQA_pretrained_model.pt
+  backbone: /path/xxxx/UniQA_weight.pt
   pretrained: false
   pos_embedding: true
   sample_size: 224
