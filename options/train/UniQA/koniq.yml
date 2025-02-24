@@ -14,7 +14,7 @@ datasets:
     type: GeneralNRDataset
     dataroot_target: /your_path/koniq10k/512x384
     meta_info_file: ./datasets/meta_info/meta_info_KonIQ10kDataset.csv
-    split_file: ./datasets/meta_info/meta_info/koniq_10split.pkl
+    split_file: ./datasets/meta_info/koniq_10split.pkl
     mos_range: [0, 100]
     lower_better: false 
     mos_normalize: true
