@@ -12,13 +12,13 @@ datasets:
   train:
     name: LIVEC
     type: LIVEChallengeDataset
-    dataroot_target: /your_path/ChallengeDB_release/Images
+    dataroot_target: /your_data_path/ChallengeDB_release/Images
     meta_info_file: ./datasets/meta_info/meta_info_LIVEChallengeDataset.csv
     split_file: ./datasets/meta_info/livec_10split.pkl
     mos_range: [0, 100]
     lower_better: false 
     mos_normalize: true
-    split_index: 1 # default index
+    split_index: 1 # default 1, set 1-10 for other split
 
     augment:
       hflip: true
@@ -35,7 +35,7 @@ datasets:
   val:
     name: LIVEC
     type: LIVEChallengeDataset
-    dataroot_target: /data/iqa_iaa_data/iqa_data/ChallengeDB_release/Images
+    dataroot_target: /your_data_path/ChallengeDB_release/Images
     meta_info_file: ./datasets/meta_info/meta_info_LIVEChallengeDataset.csv
     split_file: ./datasets/meta_info/livec_10split.pkl
     mos_range: [0, 100]
