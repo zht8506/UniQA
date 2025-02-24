@@ -18,6 +18,7 @@ datasets:
     mos_range: [0, 100]
     lower_better: false 
     mos_normalize: true
+    split_index: 1 # default 1, set 1-10 for other split
 
     augment:
       hflip: true
@@ -40,6 +41,7 @@ datasets:
     mos_range: [0, 100]
     lower_better: false 
     mos_normalize: true
+    split_index: 1
 
     num_worker_per_gpu: 4
     batch_size_per_gpu: 16
