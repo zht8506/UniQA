@@ -21,11 +21,11 @@ from pyiqa.utils.dist_util import master_only
 def init_tb_loggers(opt):
     # initialize wandb logger before tensorboard logger to allow proper sync
     if (opt['logger'].get('wandb') is not None) and (opt['logger']['wandb'].get('project')
-                                                     is not None) and ('debug' not in opt['name']):
+                                                     is not None) and ('' not in opt['name']):
         assert opt['logger'].get('use_tb_logger') is True, ('should turn on tensorboard when using wandb')
         init_wandb_logger(opt)
     tb_logger = None
-    if opt['logger'].get('use_tb_logger') and 'debug' not in opt['name']:
+    if opt['logger'].get('use_tb_logger') and '' not in opt['name']:
         tb_logger = init_tb_logger(log_dir=osp.join(opt['root_path'], 'tb_logger', opt['name']))
     return tb_logger
 
@@ -222,14 +222,9 @@ def train_pipeline(root_path, opt=None, args=None):
             iter_timer.start()
             train_data = prefetcher.next()
 
-            if 'debug' in opt['name'] and current_iter >= 8:
-                break
         # end of iter
         # use epoch based learning rate scheduler
         model.update_learning_rate(epoch+2, warmup_iter=opt['train'].get('warmup_iter', -1))
-
-        if 'debug' in opt['name'] and epoch >= 2:
-            break
     # end of epoch
 
     consumed_time = str(datetime.timedelta(seconds=int(time.time() - start_time)))
