@@ -222,14 +222,10 @@ def train_pipeline(root_path, opt=None, args=None):
             iter_timer.start()
             train_data = prefetcher.next()
 
-            if 'debug' in opt['name'] and current_iter >= 8:
-                break
         # end of iter
         # use epoch based learning rate scheduler
         model.update_learning_rate(epoch+2, warmup_iter=opt['train'].get('warmup_iter', -1))
 
-        if 'debug' in opt['name'] and epoch >= 2:
-            break
     # end of epoch
 
     consumed_time = str(datetime.timedelta(seconds=int(time.time() - start_time)))
