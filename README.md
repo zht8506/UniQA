@@ -21,6 +21,11 @@ More impressively, our UniQA achieves significant improvements on few-label IQA 
 
 Our UniQA also achieve competitive results on AIGC IQA datatset AIGIQA-20K, the enhanced colonoscopy image quality assessment dataset (ECIQAD) and the AI-Generated Image Naturalness (AGIN) dataset. Please note that these results are not included in the current ARVIX version. We will update the ARXIV paper soon.
 
+## Installation
+
+- torch>=1.12
+- python=3.9
+
 ## :open_file_folder: Weight
 We release the UniQA pre-trained weight, multimodal IQA and IAA dataset.  **You may need to log out of your Google account to download them.**
 
