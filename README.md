@@ -12,6 +12,7 @@ Despite distinct learning objectives, they have underlying interconnectedness du
 
 - torch>=1.12
 - python=3.9
+- `pip install -r requirements.txt`
 
 ## :open_file_folder: Weight
 We release the UniQA pre-trained weight, multimodal IQA and IAA dataset.  **You may need to log out of your Google account to download them.**
