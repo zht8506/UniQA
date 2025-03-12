@@ -8,19 +8,6 @@ Despite distinct learning objectives, they have underlying interconnectedness du
 
 <img src="docs/resources/UniQA_pipeline.jpg">
 
-## :trophy: Result
-
-Our UniQA can achieve SOTA performance on both IQA and IAA tasks.
-
-<img src="docs/resources/UniQA_performance_iqa.jpg">
-<img src="docs/resources/UniQA_performance_iaa.jpg">
-
-More impressively, our UniQA achieves significant improvements on few-label IQA tasks.
-
-<img src="docs/resources/UniQA_performance_few_iqa.jpg">
-
-Our UniQA also achieve competitive results on AIGC IQA datatset AIGIQA-20K, the enhanced colonoscopy image quality assessment dataset (ECIQAD) and the AI-Generated Image Naturalness (AGIN) dataset. Please note that these results are not included in the current ARVIX version. We will update the ARXIV paper soon.
-
 ## Installation
 
 - torch>=1.12
@@ -47,6 +34,20 @@ python train.py -opt options/train/UniQA/livec.yml
 Our model can be found in `pyiqa/archs/uniqa_arch.py`
 
 We also include a simple version of CLIP training (see `train_clip` dir). We recommend using [open_clip](https://github.com/mlfoundations/open_clip) to train clip, which will be more efficient.
+
+## :trophy: Result
+
+Our UniQA can achieve SOTA performance on both IQA and IAA tasks.
+
+<img src="docs/resources/UniQA_performance_iqa.jpg">
+<img src="docs/resources/UniQA_performance_iaa.jpg">
+
+More impressively, our UniQA achieves significant improvements on few-label IQA tasks.
+
+<img src="docs/resources/UniQA_performance_few_iqa.jpg">
+
+Our UniQA also achieve competitive results on AIGC IQA datatset AIGIQA-20K, the enhanced colonoscopy image quality assessment dataset (ECIQAD) and the AI-Generated Image Naturalness (AGIN) dataset. Please note that these results are not included in the current ARVIX version. We will update the ARXIV paper soon.
+
 
 ## 📚  Citation
 Please cite our work if you find our work and codes helpful for your research.
