@@ -36,13 +36,10 @@ Our model can be found in `pyiqa/archs/uniqa_arch.py`
 
 For vision-language pre-training, see the [pre-training guide](train_clip/README.md) for data preparation and training commands. The [ViT-B/16 configuration](train_clip/configs/uniqa_vit_b16_paper.yaml) uses a global batch size of 960, 5 epochs, and a learning rate of 5e-6.
 
-## Caption generation
+## Data preparation
 
-See the [shared FLIVE/AVA example](caption_generation/README.md) for LLaVA loading, all supplied prompt variants, generation settings and commands.
-
-## AIR filtering
-
-See the [core AIR example](air_filter/README.md) to load a fine-tuned CLIP, combine image-text relevance and word-count ranks, and select Top-4 comments per image.
+See the [data preparation guide](data_preparation/README.md) for LLaVA caption
+generation on FLIVE/AVA and AIR Top-4 filtering with a fine-tuned CLIP.
 
 ## :trophy: Result
 

@@ -110,7 +110,7 @@ def generate_samples(samples, templates, captioner):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--config', default=str(Path(__file__).with_name('config.yaml')))
+    parser.add_argument('--config', default=str(Path(__file__).resolve().parent / 'configs' / 'caption_generation.yaml'))
     parser.add_argument('--dataset', choices=['flive', 'ava', 'both'], default='both')
     args = parser.parse_args()
     with open(args.config, encoding='utf-8') as handle:
