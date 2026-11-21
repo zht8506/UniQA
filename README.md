@@ -34,7 +34,7 @@ python train.py -opt options/train/UniQA/livec.yml
 
 Our model can be found in `pyiqa/archs/uniqa_arch.py`
 
-For vision-language pre-training, see the [pre-training guide](train_clip/README.md) and [manuscript-based ViT-B/16 configuration](train_clip/configs/uniqa_vit_b16_paper.yaml). The guide includes data validation, four-GPU training commands, configuration provenance, and unresolved differences between the released data and manuscript. This is a reconstructed configuration, not an archived record of the original run.
+For vision-language pre-training, see the [pre-training guide](train_clip/README.md) for data preparation and training commands. The [ViT-B/16 configuration](train_clip/configs/uniqa_vit_b16_paper.yaml) uses a global batch size of 960, 5 epochs, and a learning rate of 5e-6.
 
 ## Caption generation
 
