@@ -81,7 +81,7 @@ def load_captioner(config):
         generation = dict(config['generation'])
         generation['do_sample'] = generation['temperature'] > 0
         if not generation['do_sample']:
-            # Sampling-only settings are inactive for the original greedy decoding.
+            # Sampling-only settings are inactive for greedy decoding.
             generation.pop('temperature')
             generation.pop('top_p')
         with torch.inference_mode():
