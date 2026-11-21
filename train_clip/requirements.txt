@@ -1,0 +1,9 @@
+# Dedicated pre-training dependencies; avoid loading the full IQA evaluation stack.
+torch>=2.4,<3
+torchvision>=0.19,<1
+openai-clip==1.0.1
+Pillow>=9
+numpy>=1.23
+PyYAML>=6
+# openai-clip imports pkg_resources, removed in setuptools 81+.
+setuptools>=65,<81

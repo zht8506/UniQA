@@ -34,7 +34,15 @@ python train.py -opt options/train/UniQA/livec.yml
 
 Our model can be found in `pyiqa/archs/uniqa_arch.py`
 
-We also include a simple version of CLIP training (see `train_clip` dir). We recommend using [open_clip](https://github.com/mlfoundations/open_clip) to train clip, which will be more efficient.
+For vision-language pre-training, see the [pre-training guide](train_clip/README.md) and [manuscript-based ViT-B/16 configuration](train_clip/configs/uniqa_vit_b16_paper.yaml). The guide includes data validation, four-GPU training commands, configuration provenance, and unresolved differences between the released data and manuscript. This is a reconstructed configuration, not an archived record of the original run.
+
+## Caption generation
+
+See the [shared FLIVE/AVA example](caption_generation/README.md) for LLaVA loading, all supplied prompt variants, generation settings and commands.
+
+## AIR filtering
+
+See the [core AIR example](air_filter/README.md) to load a fine-tuned CLIP, combine image-text relevance and word-count ranks, and select Top-4 comments per image.
 
 ## :trophy: Result
 

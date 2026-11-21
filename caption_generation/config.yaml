@@ -1,0 +1,66 @@
+# Core LLaVA-1.5 example. Replace paths before running.
+model_path: /path/to/llava-v1.5-7b
+model_base: null
+conv_mode: llava_v1
+seed: 123
+
+generation:
+  temperature: 0.0
+  top_p: 1.0
+  num_beams: 1
+  max_new_tokens: 1024
+  use_cache: true
+
+# Prompt texts from the provided FLIVE/AVA scripts; the missing space between
+# the FLIVE level word and "quality" has been corrected.
+prompts:
+  flive_expert: >-
+    You are an image quality inspection expert. What you are given is a {level}
+    quality image. Evaluate image quality in a few sentences based on factors
+    such as resolution, noise, brightness, and composition.
+  flive_descriptors: >-
+    Giving you a {level} quality image. Describe the quality of an image based on
+    visual descriptors such as sharpness, color balance, and noise levels.
+  flive_observer: >-
+    This is a {level} quality (sharpness, contrast, distortion) image. Assuming
+    you are a human observer, please describe your feelings when you see this image.
+  ava_expert: >-
+    You are an expert in image aesthetics. What you get is an image of {level}
+    aesthetics. In a few sentences, please evaluate the aesthetic quality of the
+    image based on factors such as content, color, lighting, and composition.
+  # Alternative prompt from infer_ava_bu_num1.py; not selected by default.
+  ava_observer: >-
+    This is an image of {level} aesthetics (content, composition, beauty, color)
+    image. Assuming you are a human observer, please describe your feelings when
+    you see this image.
+  # Unguided alternatives from infer_ava_direct.py; not selected by default.
+  ava_unguided: >-
+    You are an expert in image aesthetics. In a few sentences, please evaluate
+    the aesthetic quality of the image based on factors such as content, color,
+    lighting, and composition.
+  ava_rate_and_explain: >-
+    Please rate the aesthetic quality of the image in one sentence (poor, bad,
+    fair, good, perfect). Then explain the reasons that are related to the
+    aesthetic quality in one sentence .
+
+datasets:
+  flive:
+    csv_path: /path/to/flive/labels_image.csv
+    image_root: /path/to/flive/database
+    image_column: name
+    mos_column: mos
+    boundaries: [0, 20, 40, 60, 80, 100]
+    levels: [bad, poor, fair, good, perfect]
+    prompt_ids: [flive_expert, flive_descriptors, flive_observer]
+    output: outputs/flive_captions.json
+  ava:
+    # Supply ONLY the intended pre-training train split, not the entire AVA CSV.
+    csv_path: /path/to/ava/meta_info_AVADataset_train.csv
+    image_root: /path/to/ava/images
+    image_column: img_name
+    mos_column: MOS
+    boundaries: [0, 2, 4, 6, 8, 10]
+    # Preserve the supplied AVA scripts' actual vocabulary.
+    levels: [very bad, poor, medium, good, perfect]
+    prompt_ids: [ava_expert]
+    output: outputs/ava_captions.json

@@ -1,0 +1,8 @@
+# Fine-tuned aesthetics-aware OpenAI CLIP checkpoint (not the vanilla CLIP weight).
+clip_checkpoint: /path/to/CLIP_aes_weight.pt
+device: cuda:0
+input_json: /path/to/ava_caption_raw_all_train.json
+image_root: /path/to/ava/images
+output_json: outputs/ava_captions_air_top4.json
+top_k: 4
+text_batch_size: 64

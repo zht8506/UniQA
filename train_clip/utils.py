@@ -1,16 +1,42 @@
-#https://github.com/openai/CLIP/issues/57
-def convert_models_to_fp32(model): 
-    for p in model.parameters(): 
-        p.data = p.data.float() 
-        p.grad.data = p.grad.data.float() 
+import random
 
-def create_logits(x1,x2,logit_scale):
-    x1 = x1 / x1.norm(dim=-1, keepdim=True)
-    x2 = x2 / x2.norm(dim=-1, keepdim=True)
+import numpy as np
+import torch
+import torch.nn.functional as F
 
-    # cosine similarity as logits
-    logits_per_x1 =  logit_scale*x1 @ x2.t()
-    logits_per_x2 =  logit_scale*x2 @ x1.t()
 
-    # shape = [global_batch_size, global_batch_size]
-    return logits_per_x1, logits_per_x2
+def seed_everything(seed):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = True
+
+
+def seed_worker(worker_id):
+    seed = torch.initial_seed() % (2 ** 32)
+    random.seed(seed)
+    np.random.seed(seed)
+
+
+def convert_models_to_fp32(model):
+    """Legacy helper: parameters with no gradient are valid."""
+    for parameter in model.parameters():
+        parameter.data = parameter.data.float()
+        if parameter.grad is not None:
+            parameter.grad.data = parameter.grad.data.float()
+
+
+def create_logits(image_features, text_features, logit_scale):
+    image_features = F.normalize(image_features.float(), dim=-1)
+    text_features = F.normalize(text_features.float(), dim=-1)
+    logits = logit_scale.float() * image_features @ text_features.t()
+    return logits, logits.t()
+
+
+def contrastive_loss(image_features, text_features, logit_scale):
+    image_logits, text_logits = create_logits(image_features, text_features, logit_scale)
+    labels = torch.arange(len(image_features), device=image_features.device)
+    return (F.cross_entropy(image_logits, labels) + F.cross_entropy(text_logits, labels)) / 2

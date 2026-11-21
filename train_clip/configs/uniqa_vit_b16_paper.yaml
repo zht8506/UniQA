@@ -1,0 +1,35 @@
+# Reconstructed from the manuscript, not an archived configuration of the original run.
+model:
+  name_or_path: ViT-B/16  # Or the local OpenAI CLIP ViT-B/16 initialization checkpoint.
+  image_size: 224
+  download_root: null
+
+data:
+  annotation_files:
+    - datasets/UniQA_dataset.json
+  root: datasets/images
+  # Published JSON uses these placeholder prefixes. All paths are relative to the CWD.
+  path_mappings:
+    /dataset_path/ava: datasets/images/ava
+    /dataset_path/flive: datasets/images/flive
+  expected_images: 273897
+
+train:
+  global_batch_size: 960  # 240 per device on four GPUs; NOT 960 per GPU.
+  epochs: 5
+  learning_rate: 5.0e-6
+  weight_decay: 0.2
+  # Betas/eps inherited from the released scripts; not specified in the manuscript.
+  betas: [0.9, 0.98]
+  eps: 1.0e-6
+  drop_last: true  # Preserves the released multi-GPU script's handling of the tail.
+  # Constant learning rate; no scheduler/gradient accumulation in the released scripts.
+
+runtime:
+  device: cuda
+  gpu_ids: [0, 1, 2, 3]  # Indices after CUDA_VISIBLE_DEVICES is applied.
+  precision: fp16  # AMP implementation; original scripts used FP16 weights/FP32 updates.
+  seed: 123       # Explicit reproducibility setting; original pre-training seed is unknown.
+  num_workers: 8
+  log_every: 20
+  output_dir: experiments/uniqa_pretrain_vit_b16
